@@ -65,9 +65,6 @@ class Solution:
                 sign = 1
                 num = 0
 
-        if num != 0:
-            result += sign*num
-
-        return result
+        return result + sign*num
 
 
