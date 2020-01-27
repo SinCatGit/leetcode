@@ -45,7 +45,25 @@ class Solution:
                     dp[i] = min(dp[i], dp[i-coin]+1)
         return dp[amount] if dp[amount] < amount+1 else -1
 
+    def coinChangeV01(self, coins: List[int], amount: int) -> int:
+        self.res = amount+1
 
+        def dfs(d_coins, d_amount, d_count):
+            if d_amount == 0:
+                self.res = min(self.res, d_count)
+
+            if not d_coins:
+                return
+            coin = d_coins[0]
+
+            cnt = int(d_amount/coin)
+            while cnt >= 0 and d_count+cnt < self.res:
+                dfs(d_coins[1:], d_amount-cnt*coin, cnt+d_count)
+                cnt -= 1
+
+        dfs(sorted(coins, reverse=True), amount, 0)
+
+        return self.res if self.res < amount+1 else -1
 
 
 
