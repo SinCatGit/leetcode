@@ -31,8 +31,6 @@ class Solution:
         ---------
         .. [1] https://leetcode.com/problems/binary-tree-right-side-view/discuss/56064/5-9-Lines-Python-48%2B-ms
 
-        :param root:
-        :return:
         """
         level = [root]
         res = list()
