@@ -36,8 +36,19 @@ class Solution:
         ---------
         .. [1] https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
         .. [2] https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/Kadane's-Algorithm-Since-no-one-has-mentioned-about-this-so-far-%3A)-(In-case-if-interviewer-twists-the-input)
+        .. [3] https://www.youtube.com/watch?v=mj7N8pLCJ6w
 
         """
+        min_val, max_val = float('inf'), 0
+        for p in prices:
+            if p < min_val:
+                min_val = p
+            else:
+                max_val = max(max_val, p-min_val)
+        return max_val
+
+    def maxProfitV01(self, prices: List[int]) -> int:
+
         cur_max, final_max = 0, 0
         for i in range(1, len(prices)):
             cur_max = max(0, cur_max +prices[i ] -prices[ i -1])

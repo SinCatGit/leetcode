@@ -8,6 +8,9 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(5, solution.maxProfit([7, 1, 5, 3, 6, 4]))
         self.assertEqual(0, solution.maxProfit([7, 6, 4, 3, 1]))
 
+        self.assertEqual(5, solution.maxProfitV01([7, 1, 5, 3, 6, 4]))
+        self.assertEqual(0, solution.maxProfitV01([7, 6, 4, 3, 1]))
+
 
 if __name__ == '__main__':
     unittest.main()
