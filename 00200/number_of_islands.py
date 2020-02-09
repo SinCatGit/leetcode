@@ -64,7 +64,51 @@ class Solution():
             return 0
         return sum(sink(i, j) for i in range(rows) for j in range(cols))
 
+    def numIslandsV02(self, grid):
+        if not grid or not grid[0]:
+            return
+        uf = UnionFind(grid)
+        rows, cols = len(grid), len(grid[0])
+        islands = [(x, y) for x in range(rows) for y in range(cols) if grid[x][y]=='1']
+        for x, y in islands:
+            for dx, dy in [(0, 1), (1, 0)]:
+                _x, _y = x+dx, y+dy
+                if 0 <= _x < rows and 0 <= _y < cols and grid[_x][_y] == '1':
+                    uf.union(x*cols+y, _x*cols+_y)
+        return uf.count
 
 
+class UnionFind:
+    def __init__(self, grid):
+        n, m = len(grid), len(grid[0])
+        self.count = 0
+        self.parent = [-1] * (m * n)
+        self.rank = [0] * (m * n)
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == '1':
+                    self.parent[i * m + j] = i * m + j
+                    self.count += 1
+
+    def find(self, p):
+        while p != self.parent[p]:
+            p = self.find(self.parent[p])
+            self.parent[p] = p
+        return p
+
+    def union(self, x, y):
+        px = self.find(x)
+        py = self.find(y)
+        if px == py:
+            return
+
+        if self.rank[px] > self.rank[py]:
+            self.parent[py] = px
+        elif self.rank[px] < self.rank[py]:
+            self.parent[px] = py
+        else:
+            self.parent[px] = py
+            self.rank[py] += 1
+        self.count -= 1
 
 
