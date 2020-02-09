@@ -51,6 +51,19 @@ class Solution():
             if 0 <= _x < rows and 0 <= _y < cols:
                 self.dfs(grid, _x, _y, rows, cols)
 
+    def numIslandsV01(self, grid) -> int:
+        if not grid or not grid[0]:
+            return 0
+        rows, cols = len(grid), len(grid[0])
+
+        def sink(x, y):
+            if 0 <= x < rows and 0 <= y < cols and grid[x][y] == '1':
+                grid[x][y] = '0'
+                list(map(sink, (x, x, x+1, x-1), (y+1, y-1, y, y)))
+                return 1
+            return 0
+        return sum(sink(i, j) for i in range(rows) for j in range(cols))
+
 
 
 
