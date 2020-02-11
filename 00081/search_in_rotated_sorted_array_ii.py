@@ -42,10 +42,8 @@ class Solution:
             return False
         left, right = 0, len(nums)-1
         while left <= right:
-            while left < right and nums[left] == nums[left+1]:
+            while left < right and nums[left] == nums[right]:
                 left += 1
-            while right > left and nums[right] == nums[right-1]:
-                right -= 1
 
             mid = left + (right - left) // 2
             if nums[mid] == target:

@@ -8,6 +8,8 @@ class TestSolution(unittest.TestCase):
         self.assertFalse(sol.search([2, 5, 6, 0, 0, 1, 2], 3))
         self.assertTrue(sol.search([2, 5, 6, 0, 0, 1, 2], 0))
         self.assertTrue(sol.search([3, 4, 3, 3, 3, 3, 3], 4))
+        self.assertTrue(sol.search([3, 4, 3], 4))
+        self.assertTrue(sol.search([3, 4, 3], 3))
 
 
 if __name__ == '__main__':
