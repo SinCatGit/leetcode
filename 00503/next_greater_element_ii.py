@@ -33,6 +33,7 @@ class Solution:
         References
         ---------
         .. [1] https://leetcode.com/problems/next-greater-element-ii/discuss/98270/JavaC%2B%2BPython-Loop-Twice
+        .. [2] https://www.youtube.com/watch?v=5IAq5jd8O7Y
 
         """
         res = [-1]*len(nums)
