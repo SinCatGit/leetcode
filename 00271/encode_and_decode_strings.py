@@ -44,6 +44,7 @@ class Codec:
     References
     ---------
     .. [1] https://www.cnblogs.com/grandyang/p/5265628.html
+    .. [2] https://leetcode.com/problems/encode-and-decode-strings/discuss/70448/1%2B7-lines-Python-(length-prefixes)
 
     """
 
@@ -63,15 +64,10 @@ class Codec:
         """
         res = list()
         i = 0
-        start = 0
         while i < len(s):
-            if s[i] == '/':
-                str_len = int(s[start:i])
-                res.append(s[i+1:i+1+str_len])
-                start = i+1+str_len
-                i = start
-            i += 1
-
+            j = s.find('/', i)
+            i = j + 1 + int(s[i:j])
+            res.append(s[j+1:i])
         return res
 
 
