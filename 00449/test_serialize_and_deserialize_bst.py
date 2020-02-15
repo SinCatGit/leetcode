@@ -1,13 +1,13 @@
 import unittest
-from serialize_and_deserialize_bst import Codec, TreeNode
+from serialize_and_deserialize_bst import Codec
 
 
 class TestSolution(unittest.TestCase):
     def test_Calculate_Solution(self):
         sol = Codec()
         self.assertEqual(
-            '1 2 4 # # # 3 2 4 # # # 4 # #',
-            sol.serialize(sol.deserialize('1 2 4 # # # 3 2 4 # # # 4 # #'))
+            '2 1 3',
+            sol.serialize(sol.deserialize('2 1 3'))
         )
 
 

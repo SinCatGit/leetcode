@@ -41,8 +41,6 @@ class Codec:
                 res.append(str(r.val))
                 dfs(r.left)
                 dfs(r.right)
-            else:
-                res.append('#')
 
         dfs(root)
         return ' '.join(res)
@@ -51,24 +49,17 @@ class Codec:
         """
         Decodes your encoded data to tree.
         """
-        def dfs():
-            val = next(val_iter)
-            if val == '#':
-                return None
-            node = TreeNode(int(val))
-            node.left = dfs()
-            node.right = dfs()
-            return node
+        preorder = [int(v) for v in data.split()]
+        inorder = sorted(preorder)
 
-        val_iter = iter(data.split())
-        return dfs()
+        def dfs(mid_order):
+            if mid_order:
+                ind = mid_order.index(preorder.pop(0))
+                node = TreeNode(int(mid_order[ind]))
+                node.left = dfs(mid_order[:ind])
+                node.right = dfs(mid_order[ind+1:])
+                return node
+
+        return dfs(inorder)
 
 
-if __name__ == '__main__':
-    r = TreeNode(1)
-    node2 = TreeNode(2)
-    r.right = node2
-    cr = codec.deserialize('1 # 2 # #')
-    print(cr.val)
-    print(cr.right.val)
-    print(cr.left)
