@@ -58,4 +58,16 @@ class Solution:
             root = root.right
         return res
 
+    def inorderTraversalV02(self, root: TreeNode) -> List[int]:
+        stack = list()
+        res = list()
+        while root or stack:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                root = stack.pop()
+                res.append(root.val)
+                root = root.right
+        return res
 

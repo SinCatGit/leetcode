@@ -25,6 +25,7 @@ class TestSolution(unittest.TestCase):
         node2.right = node6
         self.assertEqual([2, 3, 4, 5, 6, 7], sol.inorderTraversal(node1))
         self.assertEqual([2, 3, 4, 5, 6, 7], sol.inorderTraversalV01(node1))
+        self.assertEqual([2, 3, 4, 5, 6, 7], sol.inorderTraversalV02(node1))
 
 
 if __name__ == '__main__':
