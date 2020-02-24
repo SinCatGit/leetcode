@@ -33,9 +33,9 @@ class Solution:
         Examples
         --------
         >>> sol = Solution()
-        >>> sorted(sol.combinationSum3(3, 7)
+        >>> sorted(sol.combinationSum3(3, 7))
         [[1, 2, 4]]
-        >>> sorted(sol.combinationSum3(3, 9)
+        >>> sorted(sol.combinationSum3(3, 9))
         [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
 
         Notes
