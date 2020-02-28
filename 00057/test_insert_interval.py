@@ -14,6 +14,15 @@ class TestSolution(unittest.TestCase):
             sol.insert([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8])
         )
 
+        self.assertEqual(
+            [[1, 5], [6, 9]],
+            sol.insertV01([[1, 3], [6, 9]], [2, 5])
+        )
+        self.assertEqual(
+            [[1, 2], [3, 10],[12, 16]],
+            sol.insertV01([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8])
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -54,4 +54,19 @@ class Solution:
                 res += pair,
         return res
 
+    def insertV01(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        l, r = [], []
+        start, end = newInterval
+        for item in intervals:
+            if item[1] < start:
+                l += item,
+            elif item[0] > end:
+                r += item,
+            else:
+                start = min(start, item[0])
+                end = max(end, item[1])
+
+        return l + [[start, end]] + r
+
+
 
