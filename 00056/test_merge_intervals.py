@@ -14,6 +14,15 @@ class TestSolution(unittest.TestCase):
             sol.merge([[1, 4], [4, 5]])
         )
 
+        self.assertEqual(
+            [[1, 6], [8, 10], [15, 18]],
+            sol.mergeV01([[1, 3], [2, 6], [8, 10], [15, 18]])
+        )
+        self.assertEqual(
+            [[1, 5]],
+            sol.mergeV01([[1, 4], [4, 5]])
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

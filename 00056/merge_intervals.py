@@ -52,4 +52,12 @@ class Solution:
                 res += pair,
         return res
 
-
+    def mergeV01(self, intervals: List[List[int]]) -> List[List[int]]:
+        res = []
+        for item in sorted(intervals):
+            start, end = item
+            if not res or start > res[-1][1]:
+                res += item,
+            else:
+                res[-1][1] = max(res[-1][1], end)
+        return res
