@@ -97,3 +97,25 @@ class NumMatrix(object):
         return res
 
 
+class NumMatrixV01(object):
+    def __init__(self, matrix: List[List[int]]):
+        self.m, self.n = len(matrix), len(matrix[0])
+        self.d = matrix
+        for row in self.d:
+            for j in range(1, self.n):
+                row[j] += row[j-1]
+
+    def update(self, row, col, val):
+        row = self.d[row]
+        orig = row[col] - (row[col-1] if col else 0)
+        diff = val - orig
+        for j in range(col, self.n):
+            row[j] += diff
+
+    def sumRegion(self, row1, col1, row2, col2):
+        res = 0
+        for r in range(row1, row2+1):
+            res += self.d[r][col2] - (self.d[r][col1-1] if col1 else 0)
+        return res
+
+
