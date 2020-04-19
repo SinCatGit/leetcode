@@ -57,6 +57,37 @@ class Solution:
         3. If the order is invalid, return an empty string.
         4. There may be multiple valid order of letters, return any one of them is fine.
         """
+        from collections import defaultdict, deque
+        edges = defaultdict(set)
+        degrees = {c: 0 for c in set(''.join(words))}
+
+        for word1, word2 in zip(words, words[1:]):
+            found = False
+            for c1, c2 in zip(word1, word2):
+                if c1 != c2:
+                    found = True
+                    if c2 not in edges[c1]:
+                        degrees[c2] += 1
+                    edges[c1].add(c2)
+                    break
+
+            if not found and len(word1) > len(word2):
+                return ''
+
+        queue = deque([c for c, val in degrees.items() if val == 0])
+        result = []
+        while queue:
+            c = queue.popleft()
+            result.append(c)
+            for e in edges[c]:
+                degrees[e] -= 1
+                if not degrees[e]:
+                    queue.append(e)
+
+        return ''.join(result) if len(result) == len(degrees) else ''
+
+
+    def alienOrderV01(self, words: List[str]):
         less = []
         for pair in zip(words, words[1:]):
             for a, b in zip(*pair):
